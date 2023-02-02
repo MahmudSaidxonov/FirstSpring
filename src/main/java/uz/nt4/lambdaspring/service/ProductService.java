@@ -3,6 +3,8 @@ package uz.nt4.lambdaspring.service;
 import org.springframework.stereotype.Service;
 import uz.nt4.lambdaspring.dto.ProductDTO;
 import uz.nt4.lambdaspring.dto.ResponseDTO;
+import uz.nt4.lambdaspring.dto.UserDTO;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -10,6 +12,19 @@ import java.util.Optional;
 @Service
 public class ProductService {
     public static List<ProductDTO> productDTOList = new ArrayList<>();
+
+    public ResponseDTO<List<ProductDTO>> getAllProducts() {
+        if (productDTOList.size()==0) {
+            return ResponseDTO.<List<ProductDTO>>builder()
+                    .message("List empty")
+                    .build();
+        }
+        return ResponseDTO.<List<ProductDTO>>builder()
+                .success(true)
+                .data(productDTOList)
+                .build();
+    }
+
 
     public ResponseDTO<ProductDTO> add(ProductDTO product) {
         if(productDTOList.stream().anyMatch(productDTO -> productDTO.getId().equals(product.getId()))){

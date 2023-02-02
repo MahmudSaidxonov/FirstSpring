@@ -27,15 +27,15 @@ public class UserService {
                 .build();
     }
 
-    public ResponseDTO<UserDTO> get() {
+    public ResponseDTO<List<UserDTO>> get() {
         if (userDTOList.size()==0) {
-            return ResponseDTO.<UserDTO>builder()
+            return ResponseDTO.<List<UserDTO>>builder()
                     .message("List empty")
                     .build();
         }
-        return ResponseDTO.<UserDTO>builder()
+        return ResponseDTO.<List<UserDTO>>builder()
                 .success(true)
-                .list(userDTOList)
+                .data(userDTOList)
                 .build();
     }
 

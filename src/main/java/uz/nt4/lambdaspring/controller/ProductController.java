@@ -7,6 +7,8 @@ import uz.nt4.lambdaspring.dto.ProductDTO;
 import uz.nt4.lambdaspring.dto.ResponseDTO;
 import uz.nt4.lambdaspring.service.ProductService;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/product")
 @RequiredArgsConstructor
@@ -23,4 +25,8 @@ public class ProductController {
         return service.add(productDTO);
     }
 
+    @GetMapping
+    public ResponseDTO<List<ProductDTO>> getAll() {
+        return service.getAllProducts();
+    }
 }

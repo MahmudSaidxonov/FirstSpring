@@ -6,6 +6,8 @@ import uz.nt4.lambdaspring.dto.ResponseDTO;
 import uz.nt4.lambdaspring.dto.UserDTO;
 import uz.nt4.lambdaspring.service.UserService;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/user")
 @RequiredArgsConstructor
@@ -13,7 +15,7 @@ public class UserController {
     private final UserService service;
 
     @GetMapping
-    public ResponseDTO<UserDTO> getUsers() {
+    public ResponseDTO<List<UserDTO>> getUsers() {
         return service.get();
     }
 
